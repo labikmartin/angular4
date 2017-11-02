@@ -1,0 +1,18 @@
+
+<input 
+type="text"
+[(ngModel)]="serverName">
+<button
+  class="btn btn-primary"
+  (click)="onCreateServer()"
+  [disabled] = "serverName === ''"
+>Add server</button>
+<p *ngIf="serverName; else noServer">{{serverName}}</p>
+<ng-container *ngIf="serverCreationStatus.length > 0; else noServerStatus" >
+  <p 
+    *ngFor="let server of serverCreationStatus" 
+    [ngClass]="{online: server.status == 'online', offline: server.status == 'offline'}">Server with ID: {{server.id}} is {{server.status}}</p>
+</ng-container>
+<ng-template #noServerStatus>
+  <p>Loading servers</p>
+</ng-template>
