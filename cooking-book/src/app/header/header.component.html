@@ -6,8 +6,12 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="">Recipes</a></li>
-        <li><a href="http://">Shopping list</a></li>
+        <li><a 
+          (click)="onNavClick('recipe')"
+          >Recipes</a></li>
+        <li><a 
+          (click)="onNavClick('shoppingList')"
+          >Shopping list</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

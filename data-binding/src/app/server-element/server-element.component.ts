@@ -24,6 +24,7 @@ export class ServerElementComponent implements OnInit {
 
   ngAfterContentInit() {
     console.log(this.paragraph.nativeElement.textContent);
+    setInterval(function() {console.log(this);},2000);
   }
 
 }
