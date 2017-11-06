@@ -12,9 +12,19 @@
           {{number}}
         </li>
       </ul>
-      <ng-template [ngIf]="onlyOdd">
-        <p appRendererHighlight>{{odd}}</p>
-      </ng-template>
+      <!-- <ng-template [ngIf]="onlyOdd">
+        <p 
+          appRendererHighlight
+          [defaultClr]="'blue'"
+          [hoverClr]="'yellow'">{{odd}}</p>
+      </ng-template> -->
+      <ul class="list-group">
+        <li
+          *ngFor="let evenNr of even"
+          class="list-group-item">
+          <span *appStructuralDirec="onlyOdd">{{evenNr}}</span>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 
 import { BasicHighlightDirective } from "./basic-highlight/basic-highlight.directive";
 import { RendererHighlightDirective } from './renderer-highlight/renderer-highlight.directive';
+import { StructuralDirecDirective } from './structural-direc/structural-direc.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     BasicHighlightDirective,
-    RendererHighlightDirective
+    RendererHighlightDirective,
+    StructuralDirecDirective
   ],
   imports: [
     BrowserModule,
