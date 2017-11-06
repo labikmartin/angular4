@@ -12,7 +12,6 @@ export class StructuralDirecDirective {
   @Input() set appStructuralDirec(condition: boolean) {
     if (!condition) {
       this.viewRef.createEmbeddedView(this.templateRef);
-      console.log(this.templateRef);
     } 
     else {
       this.viewRef.clear();
