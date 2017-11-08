@@ -1,3 +1,4 @@
+import { CanDeactivateGuardService } from './servers/edit-server/can-deactivate-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -5,6 +6,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
 import { ServersService } from './servers/servers.service';
 
 import { AppComponent } from './app.component';
@@ -33,7 +36,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ServersService],
+  providers: [
+    AuthGuardService,
+    AuthService,
+    CanDeactivateGuardService,
+    ServersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
