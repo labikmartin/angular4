@@ -25,6 +25,13 @@ export class AppComponent implements OnInit {
       'hobbies': new FormArray([])
     });
     this.isRequired = this.signupForm.get('userData.username').errors['required'];
+    // STATUS / VALUE CHANGES
+    this.signupForm.valueChanges.subscribe((value) => {
+      console.log(value);
+    });
+    this.signupForm.statusChanges.subscribe((status) => {
+      console.log(status);
+    });
   }
 
   onSubmit() {
