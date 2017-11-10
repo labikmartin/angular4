@@ -10,8 +10,25 @@ export class AppComponent {
 
   @ViewChild('loginForm') loginForm: NgForm;
 
+  formValues;
+
+  genders = ['male', 'female'];
+
   suggestUserName() {
     const suggestedName = 'Superuser';
+    // SET ALL FORM DATA
+    // this.loginForm.setValue({
+    //     userData: {
+    //       username: suggestedName,
+    //       email: 'ujco@ujco.cz'
+    //     },
+    //     question: 'pet',
+    //     gender: 'female'
+    //   });
+    // SET SINGLE/MULTIPLE FORM VALUE
+    this.loginForm.form.patchValue({
+      userData: {username: suggestedName, email: 'k@k.kk'}
+    });
   }
 
   // onSubmit(form: NgForm) {
@@ -19,9 +36,15 @@ export class AppComponent {
   // }
 
   onSubmit() {
-    console.log('yolo');
-    console.log(this.loginForm);
-    console.log(this.loginForm.controls.userData);
+    this.formValues = this.loginForm.value;
+    // RESET VALUES
+    // this.loginForm.reset();
+    // RESET TO SPECIFIC VALUE
+    this.loginForm.reset({
+      userData: {
+        username: 'yolo'
+      }
+    });
   }
 
 }
