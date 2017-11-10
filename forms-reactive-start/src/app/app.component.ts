@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { settings } from 'cluster';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +12,19 @@ export class AppComponent implements OnInit {
 
   signupForm: FormGroup;
   genders = ['male', 'female'];
+  forbiddenUserNames = ['Martin', 'Skjal'];
+  isRequired;
 
   ngOnInit() {
     this.signupForm = new FormGroup({
       'userData': new FormGroup({
-        'username': new FormControl(null, Validators.required),
-        'email': new FormControl(null, [Validators.required, Validators.email]),
+        'username': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
+        'email': new FormControl(null, [Validators.required, Validators.email], [this.forbiddenEmails.bind(this)]),
       }),
       'gender': new FormControl('female'),
       'hobbies': new FormArray([])
     });
+    this.isRequired = this.signupForm.get('userData.username').errors['required'];
   }
 
   onSubmit() {
@@ -29,6 +34,27 @@ export class AppComponent implements OnInit {
   onAddHobby() {
     const control = new FormControl(null, Validators.required);
     (<FormArray>this.signupForm.get('hobbies')).push(control);
+  }
+
+  forbiddenNames(control: FormControl): {[s: string]: boolean} {
+    if (this.forbiddenUserNames.indexOf(control.value) !== -1) {
+      return {'nameIsForbidden': true};
+    } else {
+      return null;
+    }
+  }
+
+  forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise<any>((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'k@k.kk') {
+          resolve({'forbiddenEmail': true});
+        } else {
+          resolve(null);
+        }
+      }, 2000);
+    });
+    return promise;
   }
 
 }
