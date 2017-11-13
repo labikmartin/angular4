@@ -1,7 +1,8 @@
 import { PipeTransform, Pipe } from "@angular/core";
 
 @Pipe({
-  name: 'shortenText'
+  name: 'shortenText',
+  // pure: false  <- ADD THIS IF YOU WANT TO RERUN PIPE EACH TIME THE ARRAY OR OBJECT IS UPDATE (!!! HIGH PERFORMANCE IMPACT)
 })
 
 export class ShortenPipe implements PipeTransform {

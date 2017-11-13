@@ -4,13 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { ShortenPipe } from './shorten.pipe';
+import { FilterStatus } from './filterStatus.pipe';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShortenPipe
+    ShortenPipe,
+    FilterStatus
   ],
   imports: [
     BrowserModule,
