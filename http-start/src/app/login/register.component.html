@@ -1,0 +1,20 @@
+
+
+<form (ngSubmit)="onRegister(form)" #form="ngForm">
+  <h1>Register</h1>
+  <label for="email">Email</label>
+  <input
+    ngModel
+    type="email"
+    name="email"
+    id="email">
+  <label for="password">Password</label>
+  <input
+    ngModel
+    type="password"
+    name="password"
+    id="password">
+  <span>{{errorMsg}}</span>
+  <button type="submit">Register</button>
+</form>
+

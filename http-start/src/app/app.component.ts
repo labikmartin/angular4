@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ServerService } from 'app/server.service';
 
+import * as firebase from 'firebase';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -45,6 +47,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    // firebase SDK
+    firebase.initializeApp({
+      apiKey: "AIzaSyA32fqogq1ho0dCGm6y7eVSx0ySKUjRmng",
+      authDomain: "token-test-acf61.firebaseapp.com",
+    });
+    // fetch servers
     this.serverService.fetchServers(
       (data: any[]) => {
         this.fetchedServers = data;
