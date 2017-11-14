@@ -6,11 +6,15 @@ import * as firebase from 'firebase';
 
 export class LoginService {
 
-  // login(body, cb, errorCb?) {
-  //   return this.http
-  //     .post('token-test-acf61.firebaseapp.com', body)
-  //     .subscribe(cb, errorCb);
-  // }
+  login(credentials, thenCb?, errorCb?) {
+    const email    = credentials.email;
+    const password = credentials.password;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(errorCb)
+      .then(thenCb);
+  }
 
   register(credentials, thenCb?, errorCb?) {
     const email    = credentials.email;
