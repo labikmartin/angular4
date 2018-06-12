@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
       id: this.generateId()
     });
   }
+
   private generateId() {
     return Math.round(Math.random() * 10000);
   }

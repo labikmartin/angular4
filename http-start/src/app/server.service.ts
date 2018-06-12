@@ -15,13 +15,13 @@ export class ServerService {
     // HEADERS
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http
-      .post('http://www.mocky.io/v2/', servers, {headers: headers})
+      .post('https://token-test-acf61.firebaseio.com/', servers, {headers: headers})
       .subscribe(cb);
   }
 
   fetchServers(cb, errorCb) {
     return this.http
-      .get('http://www.mocky.io/v2/59faf803370000234666bb92')
+      .get('https://token-test-acf61.firebaseio.com/')
       .map((response: Response) => {
         const data = response.json();
         return data;
@@ -35,7 +35,7 @@ export class ServerService {
 
   usingPipeAsync() {
     return this.http
-      .get('http://www.mocky.io/v2/59faf803370000234666bb92')
+      .get('https://token-test-acf61.firebaseio.com/')
       .map((response: Response) => {
         const data = response.json();
         return data[1].id;
